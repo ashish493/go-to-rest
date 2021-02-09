@@ -1,0 +1,9 @@
+{
+        "Dialect":  "mysql",
+        "Host":     "127.0.0.1",
+        "Port":     3306,
+        "Username": "guest",
+        "Password": "Guest0000!",
+        "Name":     "todoapp",
+        "Charset":  "utf8"
+}
