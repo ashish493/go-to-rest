@@ -19,7 +19,23 @@ type app struct {
 
 func (a *app) setRouters(){
 
-	//for routing
+	// Routing for handling the projects
+	a.Get("/projects", a.handleRequest(handler.GetAllProjects))
+	a.Post("/projects", a.handleRequest(handler.CreateProject))
+	a.Get("/projects/{title}", a.handleRequest(handler.GetProject))
+	a.Put("/projects/{title}", a.handleRequest(handler.UpdateProject))
+	a.Delete("/projects/{title}", a.handleRequest(handler.DeleteProject))
+	a.Put("/projects/{title}/archive", a.handleRequest(handler.ArchiveProject))
+	a.Delete("/projects/{title}/archive", a.handleRequest(handler.RestoreProject))
+
+	// Routing for handling the tasks
+	a.Get("/projects/{title}/tasks", a.handleRequest(handler.GetAllTasks))
+	a.Post("/projects/{title}/tasks", a.handleRequest(handler.CreateTask))
+	a.Get("/projects/{title}/tasks/{id:[0-9]+}", a.handleRequest(handler.GetTask))
+	a.Put("/projects/{title}/tasks/{id:[0-9]+}", a.handleRequest(handler.UpdateTask))
+	a.Delete("/projects/{title}/tasks/{id:[0-9]+}", a.handleRequest(handler.DeleteTask))
+	a.Put("/projects/{title}/tasks/{id:[0-9]+}/complete", a.handleRequest(handler.CompleteTask))
+	a.Delete("/projects/{title}/tasks/{id:[0-9]+}/complete", a.handleRequest(handler.UndoTask))
 }
 
 func (a *app) Get(path string, f func(w http.ResponseWriter, r *http.Request)){
