@@ -5,7 +5,7 @@ A REST API template with a load balancer.
 
 ### Without Docker
 
-
+testing
 ```bash
 # Download this project
 go get github.com/ashish493/go-to-rest
